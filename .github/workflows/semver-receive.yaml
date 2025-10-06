@@ -1,0 +1,14 @@
+name: Printout Received Semver Release
+
+
+on:
+  repository_dispatch:
+    types: [semver_result]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print the received version to std
+        run: echo ${{ github.event.client_payload.result.version }}
